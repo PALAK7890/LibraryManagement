@@ -1,0 +1,135 @@
+.Login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background:linear-gradient(110deg,rgb(193, 197, 255), rgb(247, 222, 247));
+
+   gap: 5vw; 
+    padding-left: 10vw; 
+    
+}
+.Main-Login-Container{
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    height: 25rem;
+    width: 20rem;
+padding: 30px;
+    border-radius: 10px;
+ 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+/* background:linear-gradient(90deg,rgb(233, 230, 246), rgb(248, 244, 248)); */
+}
+
+
+
+.login-photu{
+    display: flex;
+    flex:1;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+.login-photu img {
+    max-width: 90%;
+    height: auto;
+    object-fit: cover;
+}
+
+.login-main {
+
+  padding: 2rem 3rem;
+  width: 350px;
+}
+.Login-title h2 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.Login-title p {
+  margin-bottom: 1.5rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+
+.email\&passowrd {
+  display: flex;
+  flex-direction: column;  
+  gap: 20px;              
+}
+
+.email\&passowrd input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;     
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+
+.email\&passowrd input:focus {
+  border-color: #4747ff;
+  box-shadow: 0 0 5px rgba(255, 179, 71, 0.5);
+}
+
+.login-main button {
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  background-color: #a059cd;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.login-main button:hover {
+  background-color: #0004ff;
+}
+.Login-boxes{
+    margin-top: 15px;
+    color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+
+}
+.Login-boxes a:hover {
+  text-decoration: underline;
+}
+
+.social-login{
+     display: flex;
+  flex-direction: row;
+  justify-content: center;
+ gap: 20px;    
+  margin-bottom: 10px;        
+  margin-top: 25px; 
+
+
+}
+
+.social-icon{
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.social-login button:hover {
+  background-color: #f1f1f1;
+  
+}
+.social-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+
