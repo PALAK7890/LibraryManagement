@@ -6,65 +6,86 @@ const {User} = require('../../database_md/db');
 require('dotenv').config();
 const auth = express.Router();
 
-auth.post('/signin',async(req,res)=>{
-    try{
-        
-        const {username,email,password}=req.body
-        
+auth.post('/signin', async (req, res) => {
+    try {
+        const { username, email, password } = req.body;
 
-        if (!username || !email || !password){
-           return res.status(400).json({message: 'All Fields Are Mandatory'})
-        }
-        
-        const userExists = await User.findOne({email})
-        if (userExists){
-            return res.status(400).json({message: 'User Already Exists'})
-        }
-        if (password.length<8){
-            return res.status(400).json({message: 'Password must be 8 characters long'})
-        }
-         if (!/[0-9]/.test(password)){
-            return res.status(400).json({message: 'Password must contain 1 number long'})
-        }
-        if (!/[!@#$%^&*]/.test(password)){
-           return res.status(400).json({message: 'Password must contain 1 special Character long'})
-            
-        }
+        if (!username || !email || !password)
+            return res.status(400).json({ message: 'All Fields Are Mandatory' });
 
-        const enctPass = await bcrypt.hash(password,10)
-        const newUser = new User ({username,email,password:enctPass})
-        await newUser.save()
-        return res.status(201).json({ message: "User registered successfully" });
+        const userExists = await User.findOne({ email });
+        if (userExists) return res.status(400).json({ message: 'User Already Exists' });
 
-    }catch(err){
-        console.log(err)
-        return res.status(500).json({message:'Server Error hai',error : err})
+        if (password.length < 8)
+            return res.status(400).json({ message: 'Password must be 8 characters long' });
+
+        if (!/[0-9]/.test(password))
+            return res.status(400).json({ message: 'Password must contain a number' });
+
+        if (!/[!@#$%^&*]/.test(password))
+            return res.status(400).json({ message: 'Password must contain a special character' });
+
+        // user adim hai ya nahi ye check kar rahe hai ider
+        const role = email.toLowerCase().includes("admin") ? "admin" : "user";
+
+        const encryptedPass = await bcrypt.hash(password, 10);
+
+        const newUser = new User({
+            username,
+            email,
+            password: encryptedPass,
+            role  
+        });
+
+        await newUser.save();
+        return res.status(201).json({ message: `${role} registered successfully!` });
+
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: 'Server Error', error: err });
     }
-})
+});
 
-auth.post ('/login',async(req,res)=>{
-    try{
-        const {email,password}=req.body
-        if (!email || !password){
-            return res.status(400).json({message :'All fields asre zaruri'})
-        }
+
+auth.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        if (!email || !password)
+            return res.status(400).json({ message: 'All fields are required' });
+
         const user = await User.findOne({ email });
-        if (!user)
-            return res.status(400).json({ message: "Invalid email or password" });
+        if (!user) return res.status(400).json({ message: 'Invalid email or password' });
 
-        const samePass = await bcrypt.compare(password, user.password);
-        if (!samePass)
-      return res.status(400).json({ message: "Invalid email or password" });
+        const validPass = await bcrypt.compare(password, user.password);
+        if (!validPass) return res.status(400).json({ message: 'Invalid email or password' });
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        
+        if (user.role === "admin" && !email.includes("admin")) {
+            return res.status(403).json({ message: "You cannot login as admin" });
+        }
 
-       return  res.status(200).json({ message: "Login successful", token });
+        const token = jwt.sign(
+            { id: user._id, role: user.role }, 
+            process.env.JWT_SECRET,
+            { expiresIn: "7d" }
+        );
 
-    }catch(err){
-        console.log(err)
-        return res.status(500).json({ message: "Server error", error: err })
+        return res.status(200).json({
+            message: "Login successful",
+            token,
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                role: user.role
+            }
+        });
 
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Server error", error: err });
     }
-})
+});
 
 module.exports = auth;

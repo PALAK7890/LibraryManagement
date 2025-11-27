@@ -133,3 +133,8 @@ padding: 30px;
 }
 
 
+.Toastify__toast--success {
+  background-color: #377dff !important;  
+  color: white !important;
+  font-weight: 600;
+}
