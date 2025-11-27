@@ -1,0 +1,66 @@
+.student-dashboard {
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Section Heading */
+.section-heading {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #1e3a8a;
+}
+
+/* Horizontal Category Scroll */
+.book-scroll {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  scroll-behavior: smooth;
+}
+
+.book-scroll::-webkit-scrollbar {
+  height: 7px;
+}
+.book-scroll::-webkit-scrollbar-thumb {
+  background: #9ab6ff;
+  border-radius: 10px;
+}
+
+/* Category Cards */
+.book-card {
+  min-width: 240px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-left: 6px solid #4b7bff;
+  transition: .25s ease-in-out;
+}
+
+.book-card h3 {
+  margin: 0;
+  color: #1e40af;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.book-card p {
+  margin-top: 6px;
+  color: #374151;
+  font-size: 14px;
+}
+
+/* Hover Animation */
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  cursor: pointer;
+  border-color: #2563eb;
+}
+
+/* clickable class already used */
+.clickable { cursor:pointer; }

@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 import AdminHome from "./adminHome";
 import StudentHome from "./studentHome";
+import EbookLibrary from './e_book';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/admin-dashboard" element={<AdminHome />} />
   <Route path="/home" element={<StudentHome />} />
+  <Route path="/ebooks/:category" element={<EbookLibrary/>}/>
       </Routes>
     </BrowserRouter>
     <ToastContainer position="top-right" autoClose={2500} pauseOnHover={false}  hideProgressBar={false} theme="colored" closeOnClick
