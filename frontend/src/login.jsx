@@ -29,20 +29,24 @@ const Login =()=>{
       console.log(data);
 
       if (res.ok) {
-        toast.success("🎉 Login Successful!", { position: "bottom-left" });
+        toast.success("🎉 Login Successful!", { position: "top-right" });
 
         localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.user.username);
+        localStorage.setItem("email", data.user.email);
+        localStorage.setItem("role", data.user.role);
 
-        setTimeout(() => {
-          navigate("/home");
-        }, 1200);
+         setTimeout(() => {
+          if(data.user.role === "admin") navigate("/admin-dashboard");
+          else navigate("/home");
+        }, 1200)
       } 
       else {
-        toast.error(`⚠️ ${data.message}`, { position: "bottom-left" });
+        toast.error(`⚠️ ${data.message}`, { position: "top-right" });
       }
 
     } catch (err) {
-      toast.error("❌ Something went wrong!", { position: "bottom-left" });
+      toast.error("❌ Something went wrong!", { position: "top-right" });
       console.log(err.message);
     }
   };

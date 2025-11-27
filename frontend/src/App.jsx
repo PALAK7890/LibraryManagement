@@ -1,11 +1,13 @@
 import React from 'react';
 import Login from './login';
 import Signin from './signin';
-import Home from './home';
+import Home from './adminHome';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
+import AdminHome from "./adminHome";
+import StudentHome from "./studentHome";
 
 function App() {
   return (
@@ -14,7 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signin" element={<Signin />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/admin-dashboard" element={<AdminHome />} />
+  <Route path="/home" element={<StudentHome />} />
       </Routes>
     </BrowserRouter>
     <ToastContainer position="top-right" autoClose={2500} pauseOnHover={false}  hideProgressBar={false} theme="colored" closeOnClick
