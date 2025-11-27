@@ -1,0 +1,59 @@
+.student-nav {
+  width: 100%;
+  background:#1e3a8a;
+  color: white;
+  padding: 12px 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-left {
+  font-size: 26px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Search Input */
+.search-box {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  width: 240px;
+  outline: none;
+}
+
+/* Simple nav buttons */
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-btn:hover { color: #dbeafe; }
+
+
+.logout-btn {
+  background: #ef4444;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover { background: #dc2626; }

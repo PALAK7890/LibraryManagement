@@ -1,0 +1,55 @@
+.admin-nav {
+  width: 100%;
+  background: #0f172a;
+  color: white;
+  padding: 12px 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.admin-nav-left {
+  font-size: 26px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.admin-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+
+.admin-btn {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.admin-btn:hover {
+  color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+.admin-logout {
+  background: #ef4444;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.admin-logout:hover {
+  background: #dc2626;
+}
