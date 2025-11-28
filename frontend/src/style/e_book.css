@@ -1,4 +1,3 @@
-/* =================== PAGE LAYOUT =================== */
 
 .elib-container {
   width: 90%;
@@ -6,14 +5,13 @@
   padding-top: 35px;
   font-family: "Poppins", sans-serif;
   
-  /* ✨ Gradient premium background */
+
   background: linear-gradient(120deg, #d8e8ff, #f6f6ff, #e4f3ff);
   min-height: 100vh;
   border-radius: 12px;
   padding-bottom: 50px;
 }
 
-/* Title Styling */
 .elib-container h1 {
   font-size: 35px;
   font-weight: 700;
@@ -45,7 +43,7 @@
   padding: 14px;
   border-radius: 16px;
 
-  /* ✨ Premium Glass Effect */
+
   backdrop-filter: blur(8px);
   background: rgba(255,255,255,0.65);
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
@@ -57,7 +55,7 @@
   box-shadow: 0 8px 28px rgba(0,0,0,0.18);
 }
 
-/* Book Cover */
+
 .book-img-wrapper {
   height: 250px;
   border-radius: 12px;
@@ -72,7 +70,7 @@
 }
 .elib-book:hover img { filter: brightness(1.1) saturate(1.2) scale(1.06); }
 
-/* Ribbon Tag */
+
 .badge {
   position:absolute;
   top:10px;
@@ -87,7 +85,6 @@
 .free    { background:#00c46a; color:white; }
 .premium { background:#ffbf00; color:#0f172a; }
 
-/* Title + Author */
 h3 {
   font-size: 17px;
   margin-top:12px;
@@ -100,8 +97,6 @@ h3 {
   color:#444;
 }
 
-
-/* =================== PRICE + BUTTONS =================== */
 
 .pricing-box { margin-top:10px; }
 
@@ -116,7 +111,7 @@ h3 {
   margin-top:-3px;
 }
 
-/* Buttons */
+
 .read-btn,.rent-btn,.buy-btn {
   width:100%;
   padding:9px;
@@ -144,12 +139,12 @@ h3 {
   margin-top:5px;
 }
 
-/* Fade In Animation */
+
 @keyframes fadeIn {
   from {opacity:0; transform:translateY(10px);}
   to   {opacity:1; transform:translateY(0);}
 }
-/* LOADER (3D rotating ring) */
+
 .loader {
   margin: 40px auto;
   width: 60px;

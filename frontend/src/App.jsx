@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AdminHome from "./adminHome";
 import StudentHome from "./studentHome";
 import EbookLibrary from './e_book';
+import About from './about';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/admin-dashboard" element={<AdminHome />} />
   <Route path="/home" element={<StudentHome />} />
   <Route path="/ebooks/:category" element={<EbookLibrary/>}/>
+   <Route path="/about" element={<About/>}/>
+
       </Routes>
     </BrowserRouter>
     <ToastContainer position="top-right" autoClose={2500} pauseOnHover={false}  hideProgressBar={false} theme="colored" closeOnClick
