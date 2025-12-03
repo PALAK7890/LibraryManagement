@@ -8,6 +8,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 import AdminHome from "./adminHome";
 import StudentHome from "./studentHome";
+import BookList from "./lib_book_manage/books"
+import AddBook from "./lib_book_manage/add_books";
+import EditBook from "./lib_book_manage/edit_book";
+
+
+
 import EbookLibrary from './e_book';
 import About from './about';
 
@@ -22,6 +28,9 @@ function App() {
   <Route path="/home" element={<StudentHome />} />
   <Route path="/ebooks/:category" element={<EbookLibrary/>}/>
    <Route path="/about" element={<About/>}/>
+   <Route path="/admin/books" element={<BookList />} />
+<Route path="/admin/books/add" element={<AddBook />} />
+<Route path="/admin/books/edit/:id" element={<EditBook />} />
 
       </Routes>
     </BrowserRouter>

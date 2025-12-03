@@ -25,8 +25,7 @@ auth.post('/signin', async (req, res) => {
         if (!/[!@#$%^&*]/.test(password))
             return res.status(400).json({ message: 'Password must contain a special character' });
 
-        // user adim hai ya nahi ye check kar rahe hai ider
-        const role = email.toLowerCase().includes("admin") ? "admin" : "user";
+        
 
         const encryptedPass = await bcrypt.hash(password, 10);
 
@@ -34,7 +33,7 @@ auth.post('/signin', async (req, res) => {
             username,
             email,
             password: encryptedPass,
-            role  
+            role  :'user'
         });
 
         await newUser.save();
@@ -54,19 +53,27 @@ auth.post('/login', async (req, res) => {
         if (!email || !password)
             return res.status(400).json({ message: 'All fields are required' });
 
+        if (email === "admin@library.com" && password === "Admin123!@#") {
+            return res.json({
+                message: "Admin Login Successful",
+                token: "admin_token",
+                user: {
+                    username: "Admin",
+                    email: email,
+                    role: "admin"
+                }
+            });
+        }
+
+        // ⭐ Normal user login
         const user = await User.findOne({ email });
         if (!user) return res.status(400).json({ message: 'Invalid email or password' });
 
         const validPass = await bcrypt.compare(password, user.password);
         if (!validPass) return res.status(400).json({ message: 'Invalid email or password' });
 
-        
-        if (user.role === "admin" && !email.includes("admin")) {
-            return res.status(403).json({ message: "You cannot login as admin" });
-        }
-
         const token = jwt.sign(
-            { id: user._id, role: user.role }, 
+            { id: user._id, role: "user" },
             process.env.JWT_SECRET,
             { expiresIn: "7d" }
         );
@@ -78,7 +85,7 @@ auth.post('/login', async (req, res) => {
                 id: user._id,
                 username: user.username,
                 email: user.email,
-                role: user.role
+                role: "user"
             }
         });
 
@@ -87,5 +94,6 @@ auth.post('/login', async (req, res) => {
         return res.status(500).json({ message: "Server error", error: err });
     }
 });
+
 
 module.exports = auth;
