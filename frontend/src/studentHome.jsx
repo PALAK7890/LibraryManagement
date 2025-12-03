@@ -1,7 +1,15 @@
 import StudentNavbar from "./studentNav";
 import { useNavigate } from "react-router-dom";
+import {useState,useEffect} from 'react'
 import './style/studentHome.css'
+
 export default function StudentHome() {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("username");
+    if (storedUser) setUsername(storedUser);
+  }, []);
   const categories = [
   { id: "computer_science", title: "Computer Science" },
   { id: "programming", title: "Programming" },
@@ -19,6 +27,7 @@ export default function StudentHome() {
     <>
     <StudentNavbar/>
     <div className="student-dashboard">
+       <h2 className="welcome-text">Welcome {username} 👋</h2>
       
       {/* 📚 E-BOOKS SECTION */}
       <h2 className="section-heading">E-Books Library</h2>
