@@ -1,5 +1,5 @@
 const express = require("express");
-const admin_books= express();
+const admin_books= express.Router();
 const { Book } = require("../../lib_md/books.js");
 
 // ADD BOOK
@@ -19,6 +19,7 @@ admin_books.get("/api/books", async (req, res) => {
     const books = await Book.find().sort({ createdAt: -1 });
     res.json(books);
   } catch (err) {
+    console.log("BOOKS FETCH ERROR:", err);   // 👈 ADD THIS
     res.status(500).json({ message: "Error fetching books", error: err });
   }
 });
@@ -30,7 +31,8 @@ admin_books.get("/api/books/:id", async (req, res) => {
     if (!book) return res.status(404).json({ message: "Book not found" });
     res.json(book);
   } catch (err) {
-    res.status(500).json({ message: "Error fetching book", error: err });
+    console.log("BOOKS FETCH ERROR:", err);   // 👈 ADD THIS
+    res.status(500).json({ message: "Error fetching books", error: err });
   }
 });
 
