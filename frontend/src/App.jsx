@@ -11,7 +11,7 @@ import StudentHome from "./studentHome";
 import BookList from "./lib_book_manage/books"
 import AddBook from "./lib_book_manage/add_books";
 import EditBook from "./lib_book_manage/edit_book";
-
+import AdminStudents from './adminStudents';
 
 
 import EbookLibrary from './e_book';
@@ -24,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/admin/students" element={<AdminStudents />} />
         <Route path="/admin-dashboard" element={<AdminHome />} />
   <Route path="/home" element={<StudentHome />} />
   <Route path="/ebooks/:category" element={<EbookLibrary/>}/>

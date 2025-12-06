@@ -19,4 +19,18 @@ const connectDB = async () => {
   }
 };
 
-module.exports = { User, connectDB };
+const mongoose = require("mongoose");
+
+const studentSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  enrollment: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
+  course: { type: String, required: true },
+  year: { type: Number, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+const Student = mongoose.model("Student", userSchema);
+
+
+
+module.exports = { User, connectDB ,Student};

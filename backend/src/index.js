@@ -2,16 +2,19 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
-
+const app = express();
 const { connectDB } = require("../database_md/db");
 const authRoutes = require("./auth/loginSignAuth");
 const booksApi = require("./auth/lib_books.js");
+const studentRoutes = require("./routes/studentRoutes");
 
-const app = express();
+
+
 app.use(express.json());
 app.use(cors());
 
 connectDB();
+app.use("/api/students", studentRoutes);
 
 app.use("/api/auth", authRoutes);
 
