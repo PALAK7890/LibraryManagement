@@ -13,7 +13,7 @@ import AddBook from "./lib_book_manage/add_books";
 import EditBook from "./lib_book_manage/edit_book";
 import AdminStudents from './adminStudents';
 
-
+import CompleteProfile from './completeProfile';
 import EbookLibrary from './e_book';
 import About from './about';
 
@@ -27,6 +27,8 @@ function App() {
         <Route path="/admin/students" element={<AdminStudents />} />
         <Route path="/admin-dashboard" element={<AdminHome />} />
   <Route path="/home" element={<StudentHome />} />
+  <Route path="/complete-profile" element={<CompleteProfile />} />
+
   <Route path="/ebooks/:category" element={<EbookLibrary/>}/>
    <Route path="/about" element={<About/>}/>
    <Route path="/admin/books" element={<BookList />} />

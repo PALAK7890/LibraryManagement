@@ -18,9 +18,6 @@ const connectDB = async () => {
     process.exit(1);
   }
 };
-
-const mongoose = require("mongoose");
-
 const studentSchema = new mongoose.Schema({
   name: { type: String, required: true },
   enrollment: { type: String, required: true, unique: true },
@@ -29,7 +26,7 @@ const studentSchema = new mongoose.Schema({
   year: { type: Number, required: true },
   createdAt: { type: Date, default: Date.now }
 });
-const Student = mongoose.model("Student", userSchema);
+const Student = mongoose.model("Student", studentSchema);
 
 
 

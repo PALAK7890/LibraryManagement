@@ -38,7 +38,7 @@ const Login =()=>{
 
          setTimeout(() => {
           if(data.user.role === "admin") navigate("/admin-dashboard");
-          else navigate("/home");
+          else navigate("/complete-profile");
         }, 1200)
       } 
       else {
