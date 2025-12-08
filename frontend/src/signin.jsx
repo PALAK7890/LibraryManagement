@@ -6,41 +6,41 @@ import googleLogo from './assests/ggl.png';
 import facebookLogo from './assests/fb.png';
 
 const Signin = () => {
-     const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
   });
-  const navigate = useNavigate(); 
 
-   const handleSubmit = async (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:8080/api/auth/signin", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-        mode: "cors"
       });
 
       const data = await res.json();
-      console.log(data);
+      console.log("SIGNUP RESPONSE:", data);
 
       if (res.ok) {
-        alert("Signup successful!")
+        alert("Signup Successful!");
         navigate("/");
       } else {
         alert(data.message);
       }
     } catch (err) {
       console.error("Error:", err);
+      alert("Something went wrong!");
     }
   };
 
   return (
     <div className="Login">
-     
       <div className='Main-Login-Container'>
         <div className='login-main'>
           <div className='Login-title'>
@@ -50,18 +50,36 @@ const Signin = () => {
 
           <div className='Login-boxes'>
             <form className='email&passowrd' onSubmit={handleSubmit}>
-              <input type='text' placeholder='Full Name' required onChange={(e) =>
-          setFormData({ ...formData, username: e.target.value })
-        }/>
-              <input type='email' placeholder='Email' required  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              <input
+                type='text'
+                placeholder='Full Name'
+                required
+                onChange={(e) =>
+                  setFormData({ ...formData, username: e.target.value })
+                }
               />
-              <input type='password' placeholder='Password' required onChange={(e) =>
-          setFormData({ ...formData, password: e.target.value })
-        }/>
-        <button type="submit">Sign Up</button>
+
+              <input
+                type='email'
+                placeholder='Email'
+                required
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+              />
+
+              <input
+                type='password'
+                placeholder='Password'
+                required
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+              />
+
+              <button type="submit">Sign Up</button>
             </form>
 
-            
             <p>Already have an account? <a href='/'>Login here</a></p>
 
             <div className='social-login'>

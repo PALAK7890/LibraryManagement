@@ -14,59 +14,60 @@ const Login = () => {
     password: "",
   });
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+const handleLogin = async (e) => {
+  e.preventDefault();
 
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+  try {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
 
-      const data = await res.json();
-      console.log("LOGIN RESPONSE:", data);
+    const data = await res.json();
+    console.log("LOGIN RESPONSE:", data);
 
-      if (res.ok) {
-        toast.success("🎉 Login Successful!", { position: "top-right" });
+    if (res.ok) {
+      toast.success("🎉 Login Successful!", { position: "top-right" });
 
-        // Save login info
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("username", data.user.username);
-        localStorage.setItem("email", data.user.email);
-        localStorage.setItem("role", data.user.role);
+      // Save login info
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("username", data.user.username);
+      localStorage.setItem("email", data.user.email);
+      localStorage.setItem("role", data.user.role);
 
-        // ADMIN → Dashboard
-        if (data.user.role === "admin") {
-          setTimeout(() => navigate("/admin-dashboard"), 1200);
-          return;
-        }
-
-        // STUDENT → Check if profile exists
-        const checkRes = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/students/check?email=${data.user.email}`
-        );
-        const checkData = await checkRes.json();
-
-        console.log("PROFILE CHECK:", checkData);
-
-        setTimeout(() => {
-          if (checkData.exists) {
-            navigate("/home");            // Profile found → go home
-          } else {
-            navigate("/complete-profile"); // No profile → ask details once
-          }
-        }, 1200);
-      } 
-      else {
-        toast.error(`⚠️ ${data.message}`, { position: "top-right" });
+      // ADMIN LOGIN
+      if (data.user.role === "admin") {
+        setTimeout(() => navigate("/admin-dashboard"), 1200);
+        return;
       }
 
-    } catch (err) {
-      toast.error("❌ Something went wrong!", { position: "top-right" });
-      console.log(err.message);
+      // STUDENT LOGIN → Check profile exists
+      const checkRes = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/students/check?email=${data.user.email}`
+      );
+      const checkData = await checkRes.json();
+
+      console.log("PROFILE CHECK:", checkData);
+
+      setTimeout(() => {
+        if (checkData.exists) {
+          navigate("/home");
+        } else {
+          navigate("/complete-profile");
+        }
+      }, 1200);
+    } else {
+      toast.error(`⚠️ ${data.message}`, { position: "top-right" });
     }
-  };
+
+  } catch (err) {
+    toast.error("❌ Something went wrong!", { position: "top-right" });
+    console.log(err.message);
+  }
+};
+
+
 
   return (
     <div className="Login">
