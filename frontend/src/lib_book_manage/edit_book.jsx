@@ -8,7 +8,7 @@ export default function EditBook() {
   const [book, setBook] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/books/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/apibooks/${id}`)
       .then(res => res.json())
       .then(data => setBook(data))
       .catch(() => toast.error("Failed to load book"));
@@ -21,7 +21,7 @@ export default function EditBook() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetch(`http://localhost:8080/api/books/${id}`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/api/books/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(book),

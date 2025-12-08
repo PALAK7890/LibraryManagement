@@ -33,7 +33,8 @@ export default function StudentHome() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/students/me?email=${localStorage.getItem("email")}`)
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/students/me?email=${localStorage.getItem("email")}`)
+
 
         const data = await res.json();
 

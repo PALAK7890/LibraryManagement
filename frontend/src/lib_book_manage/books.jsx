@@ -9,7 +9,7 @@ export default function BookList() {
 
   const fetchBooks = async () => {
     try {
-      const res = await fetch("http://localhost:8080/api/books");
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/books`);
       const data = await res.json();
       setBooks(data);
     } catch (err) {
@@ -25,7 +25,7 @@ export default function BookList() {
     if (!window.confirm("Are you sure you want to delete this book?")) return;
 
     try {
-      const res = await fetch(`http://localhost:8080/api/books/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/books/${id}`, {
         method: "DELETE",
       });
 

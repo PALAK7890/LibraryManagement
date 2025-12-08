@@ -19,7 +19,8 @@ export default function AdminStudents() {
 
   // LOAD STUDENTS
   const loadStudents = async () => {
-    const res = await fetch("http://localhost:8080/api/admin/students")
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/students`)
+
     const data = await res.json();
     setStudents(data);
   };
