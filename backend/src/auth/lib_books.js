@@ -5,13 +5,28 @@ const  Book  = require("../../lib_md/books.js");
 // ADD BOOK
 admin_books.post("/", async (req, res) => {
   try {
-    const book = new Book(req.body);
+    console.log("REQUEST BODY:", req.body);   // ⭐ DEBUG HERE
+
+    const book = new Book({
+      title: req.body.title,
+      author: req.body.author,
+      category: req.body.category,
+      description: req.body.description || "",
+      isbn: req.body.isbn || "",
+      quantity: Number(req.body.quantity) || 1,
+      imageUrl: req.body.imageUrl || "",
+      publishedYear: Number(req.body.publishedYear) || null,
+    });
+
     await book.save();
+
     res.status(201).json({ message: "Book added successfully!", book });
   } catch (err) {
+    console.log("ADD BOOK ERROR:", err);   // ⭐ NOW YOU SEE REAL ERROR
     res.status(500).json({ message: "Error adding book", error: err });
   }
 });
+
 
 // GET ALL BOOKS
 admin_books.get("/", async (req, res) => {

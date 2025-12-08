@@ -33,6 +33,7 @@ function App() {
           <Route path="/admin/books" element={<BookList />} />
           <Route path="/admin/books/add" element={<AddBook />} />
           <Route path="/admin/books/edit/:id" element={<EditBook />} />
+          <Route path="/ebooks/:category" element={<EbookLibrary />} />
 
           {/* STUDENT */}
           <Route path="/home" element={<StudentHome />} />
