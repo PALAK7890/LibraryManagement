@@ -1,0 +1,57 @@
+.contact-container {
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+  font-family: "Poppins", sans-serif;
+  padding-bottom: 40px;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #6a42cf;
+  margin-bottom: 30px;
+}
+
+/* Contact Cards */
+.contact-card {
+  background: #ffffff;
+  padding: 22px 25px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 18px rgba(120, 90, 200, 0.15);
+  border-left: 6px solid #a78bfa;
+}
+
+.contact-card h3 {
+  color: #6a42cf;
+  margin-bottom: 10px;
+}
+
+.contact-card p {
+  margin: 6px 0;
+  color: #4b3f72;
+  font-size: 15px;
+}
+
+/* Rules List */
+.rules-card ul {
+  padding-left: 20px;
+}
+
+.rules-card li {
+  margin: 8px 0;
+  color: #54438f;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .contact-card {
+    padding: 18px 20px;
+  }
+  .contact-title {
+    font-size: 24px;
+  }
+}

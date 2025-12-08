@@ -1,15 +1,20 @@
+/* MAIN PAGE */
 .student-dashboard {
   width: 90%;
   margin: auto;
   margin-top: 30px;
   font-family: "Poppins", sans-serif;
 }
+
+/* Welcome text */
 .welcome-text {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #5b21b6;
+  margin-bottom: 25px;
 }
-/* Section Heading */
+
+/* SECTION HEADINGS */
 .section-heading {
   font-size: 24px;
   font-weight: 600;
@@ -17,7 +22,7 @@
   color: #1e3a8a;
 }
 
-/* Horizontal Category Scroll */
+/* E-BOOK SCROLL (Do NOT change these — you said not to) */
 .book-scroll {
   display: flex;
   gap: 18px;
@@ -25,46 +30,126 @@
   padding-bottom: 15px;
   scroll-behavior: smooth;
 }
-
-.book-scroll::-webkit-scrollbar {
-  height: 7px;
-}
+.book-scroll::-webkit-scrollbar { height: 7px; }
 .book-scroll::-webkit-scrollbar-thumb {
   background: #9ab6ff;
   border-radius: 10px;
 }
-
-/* Category Cards */
 .book-card {
   min-width: 240px;
-  background: #ffffff;
+  background: white;
   border-radius: 14px;
   padding: 18px 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   border-left: 6px solid #4b7bff;
-  transition: .25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
-
-.book-card h3 {
-  margin: 0;
-  color: #1e40af;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.book-card p {
-  margin-top: 6px;
-  color: #374151;
-  font-size: 14px;
-}
-
-/* Hover Animation */
 .book-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.12);
   cursor: pointer;
   border-color: #2563eb;
 }
+.book-card h3 { margin: 0; font-size: 18px; color: #1e40af; }
+.book-card p { margin-top: 6px; color: #374151; font-size: 14px; }
 
-/* clickable class already used */
-.clickable { cursor:pointer; }
+/* PROFILE CARD */
+.profile-card {
+  background: white;
+  padding: 25px;
+  margin-top: 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(120, 90, 200, 0.15);
+  border-left: 6px solid #a78bfa;
+}
+.profile-card h3 {
+  color: #6a42cf;
+  margin-bottom: 10px;
+}
+.profile-card p {
+  margin: 4px 0;
+  color: #4b3f72;
+  font-size: 15px;
+}
+
+/* QUICK ACTION BUTTONS */
+.quick-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+.quick-actions button {
+  background: #8f6deb;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+}
+.quick-actions button:hover {
+  background: #6c4fd5;
+}
+
+/* SECTIONS */
+.section {
+  margin-top: 30px;
+}
+
+/* CARDS ROW */
+.cards-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  width: 230px;
+  box-shadow: 0 5px 15px rgba(125, 100, 200, 0.12);
+}
+.card.small { width: 180px; }
+.card h3 { font-size: 17px; margin: 0; color: #4e3a96; }
+.tag {
+  margin-top: 8px;
+  padding: 5px 10px;
+  background: #e9ddff;
+  color: #5f3ec8;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+/* NOTIFICATIONS */
+.notification-list,
+.history-list {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 5px 16px rgba(125, 100, 200, 0.12);
+  list-style: none;
+}
+.notification-list li,
+.history-list li {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #3b336b;
+}
+.overdue {
+  background: #ffb3b3;
+  color: #a60000;
+}
+
+.fine-box {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 14px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #b91c1c;
+  width: fit-content;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+

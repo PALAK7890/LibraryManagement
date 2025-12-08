@@ -1,9 +1,9 @@
 const express = require("express");
 const admin_books= express.Router();
-const { Book } = require("../../lib_md/books.js");
+const  Book  = require("../../lib_md/books.js");
 
 // ADD BOOK
-admin_books.post("/api/books", async (req, res) => {
+admin_books.post("/", async (req, res) => {
   try {
     const book = new Book(req.body);
     await book.save();
@@ -14,7 +14,7 @@ admin_books.post("/api/books", async (req, res) => {
 });
 
 // GET ALL BOOKS
-admin_books.get("/api/books", async (req, res) => {
+admin_books.get("/", async (req, res) => {
   try {
     const books = await Book.find().sort({ createdAt: -1 });
     res.json(books);
@@ -25,7 +25,7 @@ admin_books.get("/api/books", async (req, res) => {
 });
 
 // GET ONE BOOK
-admin_books.get("/api/books/:id", async (req, res) => {
+admin_books.get("/:id", async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
     if (!book) return res.status(404).json({ message: "Book not found" });
@@ -37,7 +37,7 @@ admin_books.get("/api/books/:id", async (req, res) => {
 });
 
 // UPDATE BOOK
-admin_books.put("/api/books/:id", async (req, res) => {
+admin_books.put("/:id", async (req, res) => {
   try {
     const updatedBook = await Book.findByIdAndUpdate(
       req.params.id,
@@ -51,7 +51,7 @@ admin_books.put("/api/books/:id", async (req, res) => {
 });
 
 // DELETE BOOK
-admin_books.delete("/api/books/:id", async (req, res) => {
+admin_books.delete("/:id", async (req, res) => {
   try {
     await Book.findByIdAndDelete(req.params.id);
     res.json({ message: "Book deleted successfully!" });

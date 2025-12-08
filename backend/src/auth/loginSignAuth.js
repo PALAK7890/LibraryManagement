@@ -8,7 +8,7 @@ const auth = express.Router();
 
 auth.post('/signin', async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { username, email, password,role } = req.body;
 
         if (!username || !email || !password)
             return res.status(400).json({ message: 'All Fields Are Mandatory' });
@@ -33,11 +33,11 @@ auth.post('/signin', async (req, res) => {
             username,
             email,
             password: encryptedPass,
-            role  :'user'
+           role: role || "user" 
         });
 
         await newUser.save();
-        return res.status(201).json({ message: `${role} registered successfully!` });
+        return res.status(201).json({ message: `${newUser.role} registered successfully!` });
 
     } catch (err) {
         console.log(err);
@@ -85,7 +85,7 @@ auth.post('/login', async (req, res) => {
                 id: user._id,
                 username: user.username,
                 email: user.email,
-                role: "user"
+                role: user.role
             }
         });
 
@@ -94,6 +94,37 @@ auth.post('/login', async (req, res) => {
         return res.status(500).json({ message: "Server error", error: err });
     }
 });
+auth.post("/forgot-password", async (req, res) => {
+  try {
+    const { email, enrollment, newPassword } = req.body;
+
+    if (!email || !enrollment || !newPassword) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const user = await User.findOne({ email, enrollment });
+    if (!user) {
+      return res.status(404).json({ message: "Invalid details. Student not found." });
+    }
+
+    if (newPassword.length < 8) {
+      return res.status(400).json({ message: "Password must be at least 8 characters" });
+    }
+
+    const encrypted = await bcrypt.hash(newPassword, 10);
+
+    user.password = encrypted;
+    await user.save();
+
+    return res.json({ success: true, message: "Password reset successful! You can now login." });
+
+  } catch (err) {
+    console.log("FORGOT PASSWORD ERROR:", err);
+    return res.status(500).json({ message: "Server error", error: err });
+  }
+});
+
+  
 
 
 module.exports = auth;

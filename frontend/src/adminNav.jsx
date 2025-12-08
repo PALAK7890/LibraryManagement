@@ -19,7 +19,7 @@ export default function AdminNavbar() {
         <button onClick={() => navigate("/admin-dashboard")} className="admin-btn">Dashboard</button>
         <button onClick={() => navigate("/admin/books")} className="admin-btn">Books</button>
         <button onClick={() => navigate("/admin/students")} className="admin-btn">Students</button>
-        <button onClick={() => navigate("/admin/reports")} className="admin-btn">Reports</button>
+
 
         <button onClick={logout} className="admin-logout">
           Logout

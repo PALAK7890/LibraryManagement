@@ -1,0 +1,67 @@
+.info-container {
+  width: 90%;
+  margin: 30px auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.info-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #6a42cf;
+  margin-bottom: 20px;
+}
+
+/* PROFILE CARD */
+.info-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(150,120,220,0.15);
+  border-left: 6px solid #a78bfa;
+  margin-bottom: 25px;
+}
+
+.info-card p {
+  margin: 8px 0;
+  color: #4b3f72;
+  font-size: 16px;
+}
+
+/* TITLES */
+.section-title {
+  font-size: 22px;
+  color: #5b21b6;
+  margin: 20px 0 12px;
+}
+
+/* BOOKS LIST */
+.books-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.book-item {
+  background: #f8f3ff;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border-left: 6px solid #c8aaff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.book-item p {
+  margin: 3px 0;
+  color: #4b3f72;
+}
+
+/* FINE BOX */
+.fine-box {
+  background: #ffe1e1;
+  padding: 15px 20px;
+  color: #b91c1c;
+  font-weight: 700;
+  font-size: 18px;
+  width: fit-content;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(255,0,0,0.15);
+}

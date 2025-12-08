@@ -12,24 +12,35 @@ export default function StudentNavbar() {
   return (
     <nav className="student-nav">
 
-    
+      {/* Left Logo */}
       <div className="nav-left" onClick={() => navigate("/home")}>
         📚 LibraTrack
       </div>
 
-      
+      {/* Right Links */}
       <div className="nav-right">
-        
-        
+
         <input 
           type="text" 
           className="search-box" 
           placeholder="Search books..."
         />
 
-        <button onClick={() => navigate("/about")} className="nav-btn">About</button>
-        <button onClick={() => navigate("/contact")} className="nav-btn">Contact</button>
-        <button onClick={logout} className="logout-btn">Logout</button>
+        <button onClick={() => navigate("/ebooks")} className="nav-btn">
+          📖 E-Books
+        </button>
+
+        <button onClick={() => navigate("/about")} className="nav-btn">
+          About
+        </button>
+
+        <button onClick={() => navigate("/student-contact")} className="nav-btn">
+          Contact
+        </button>
+
+        <button onClick={logout} className="logout-btn">
+          Logout
+        </button>
 
       </div>
     </nav>
